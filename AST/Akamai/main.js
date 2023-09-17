@@ -1,6 +1,6 @@
 // VB 航空  网址: https://www.vivaaerobus.com
 // 初始化sensor_data的 js文件  可过一级风控
-// 包含的混淆类型： 16进制字符串，16进制转换，数值常量混淆，数组混淆，花指令，jsfuck，控制流平坦化
+// 包含的混淆类型： 16进制字符串，16进制转换，数值常量混淆，数组混淆，花指令，jsfuck编码，控制流平坦化
 (function PbllMMybxy() {
     HV();
     C7V(); 
