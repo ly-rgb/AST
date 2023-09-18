@@ -15,12 +15,10 @@ visitor = {
             )return;
         let funcValue = path.node.body.body[0].argument
         let Bind = path.scope.getBinding(path.node.id.name)
-        console.log(path.node.id.name)
         Bind.scope.traverse(
             Bind.scope.block,
             {
                 CallExpression(p) {
-                    console.log(path.node.id.name)
                     if (p.node.callee.name != path.node.id.name){
                         return
                     }
