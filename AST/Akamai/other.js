@@ -61,3 +61,28 @@ const visitor = {
 traverse(ast, visitor);
 const newCode = generator(ast)
 fs.writeFile("newCode.js", newCode.code, (err)=>{})
+
+
+// 将二项表达式计算出来的脚本
+const fs = require("fs");
+const types = require("@babel/types");
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default
+const generator = require("@babel/generator").default
+const code = fs.readFileSync("step3.js", {encoding: "utf-8"});
+const ast = parser.parse(code);
+
+const visitor = {
+    "BinaryExpression"(path) {
+        if(types.isBinaryExpression(path.node.left) && types.isBinaryExpression(path.node.right)){
+            const {confident, value} = path.evaluate()
+            path.replaceInline(types.valueToNode(value))
+        }
+    }
+}
+
+traverse(ast, visitor);
+
+const newCode = generator(ast)
+
+fs.writeFile("newCode.js", newCode, (err)=>{})
