@@ -1,5 +1,6 @@
 //  初始化生成的有 500个变量  完成了表达式的替换
 (function PbllMMybxy() {
+    VV = {};
     cV(); // 删除了 HV函数    
     B7V();
     function B7V() {
