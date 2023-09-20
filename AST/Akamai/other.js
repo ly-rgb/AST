@@ -86,3 +86,63 @@ traverse(ast, visitor);
 const newCode = generator(ast)
 
 fs.writeFile("newCode.js", newCode, (err)=>{})
+
+
+//  将生成的变量替换到调用处
+const fs = require("fs");
+const types = require("@babel/types");
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default
+const generator = require("@babel/generator").default
+
+
+const code = fs.readFileSync("step4.js", {encoding: "utf-8"});
+const ast = parser.parse(code);
+
+var obj1 = {};
+
+const visitor = {
+    FunctionDeclaration(path){
+        if(path.node.id.name == "B7V"){
+            let expressions = path.node.body.body[0].expression.expressions
+            for(i = 0; i < expressions.length; i++){
+                let left = expressions[i].left.name
+                let right = expressions[i].right.value;
+                obj1[left] = right
+            }
+        }
+    },
+    CallExpression(path){
+        if(path.node.arguments == []){
+            return
+        };
+        for(i = 0; i < path.node.arguments.length; i++){
+            if(path.node.arguments[i].type == 'Identifier'){
+                let name = path.node.arguments[i].name;
+                if(obj1.hasOwnProperty(name)){
+                    let value = obj1[name]
+                    path.node.arguments[i].type = 'NumericLiteral'
+                    path.node.arguments[i].value = value
+            }
+        }
+        }
+         },
+    enter(path){
+        if(path.node.type == 'Identifier'){
+            let name = path.node.name
+            if(obj1.hasOwnProperty(name)){
+                let value = obj1[name]
+                path.node.type = 'NumericLiteral'
+                path.node.value = value
+        }
+    }
+}
+}
+
+
+traverse(ast, visitor)
+
+newCode = generator(ast, {retainLines: true, compact: false})
+fs.writeFile("newCode.js", newCode.code, (err)=>{})
+
+
