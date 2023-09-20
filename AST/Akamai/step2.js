@@ -1,5 +1,6 @@
 // 第二步  去除了jsfuck 编码   删除了if(0)等死代码
 (function PbllMMybxy() {
+  VV = {};
   cV(); // 删除了 HV函数
   C7V();
   B7V();
