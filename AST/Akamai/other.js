@@ -73,7 +73,7 @@ const code = fs.readFileSync("step3.js", {encoding: "utf-8"});
 const ast = parser.parse(code);
 
 const visitor = {
-    "BinaryExpression"(path) {
+    BinaryExpression(path) {
         if(types.isBinaryExpression(path.node.left) && types.isBinaryExpression(path.node.right)){
             const {confident, value} = path.evaluate()
             path.replaceInline(types.valueToNode(value))
@@ -85,7 +85,7 @@ traverse(ast, visitor);
 
 const newCode = generator(ast)
 
-fs.writeFile("newCode.js", newCode, (err)=>{})
+fs.writeFile("newCode.js", newCode.code, (err)=>{})
 
 
 //  将生成的变量替换到调用处
@@ -142,7 +142,7 @@ const visitor = {
 
 traverse(ast, visitor)
 
-newCode = generator(ast, {retainLines: true, compact: false})
+const newCode = generator(ast, {retainLines: true, compact: false})
 fs.writeFile("newCode.js", newCode.code, (err)=>{})
 
 

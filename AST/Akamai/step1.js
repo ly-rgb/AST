@@ -1,5 +1,6 @@
 // 第一步：还原了 16进制字符串 16进制转换  XV 替换成 window
 (function PbllMMybxy() {
+    window = {};
     VV = {};
     cV();// 删除了 HV函数
     C7V();
@@ -5313,14 +5314,19 @@
 
     function L7V(R7V, VwV, O7V) {
         var h7V = nwV(R7V, "0x" + O7V);
+        var h7V = 211627;
         var r7V = nwV(R7V, ";", h7V);
+        var r7V = 211647;
         var F7V = h7V + EwV(O7V) + 3;
+        var F7V = 211637;
         var l7V = dwV(R7V, F7V, r7V - F7V);
+        var l7V = "1411485391"
         var g7V = dwV(R7V, 0, h7V);
         var K7V = dwV(R7V, r7V + 1);
         var f7V = g7V + K7V + typeof window[VwV];
         var XwV = M7V(f7V, 955944);
-        return l7V - XwV;
+        var XwV = 1411484906;
+        return 485;
     }
 
     var EUV = function () {
