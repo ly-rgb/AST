@@ -1,5 +1,6 @@
 //  还原了初始的变量 需要替换到调用表达式
 (function PbllMMybxy() {// 
+  VV = {};
   cV(); // 删除了 HV函数  
   B7V();
   function B7V() {
