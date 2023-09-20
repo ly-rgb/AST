@@ -1,5 +1,6 @@
 // 第一步：还原了 16进制字符串 16进制转换  XV 替换成 window
 (function PbllMMybxy() {
+    VV = {};
     cV();// 删除了 HV函数
     C7V();
     B7V();
