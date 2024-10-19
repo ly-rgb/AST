@@ -16,4 +16,4 @@ AST Explorer 在线网站：https://astexplorer.net/
 
 其他混淆：eval加密、花指令、jsfuck编码。
 
-文件夹内提供有akamai、极验等实战案例。
+文件夹内提供有akamai、极验、B站等实战案例。
